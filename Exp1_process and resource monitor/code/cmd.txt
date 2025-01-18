@@ -1,0 +1,79 @@
+command         // 错误命令
+help
+create          // 参数量错误
+create p1 2
+create p2 2
+list_p
+list_r
+clear_cmd
+
+request 0 A     // 必须先调度再分配资源
+activate 0
+activate 1
+activate 2      // 进程的存在性检验
+list_p
+clear_cmd
+
+request 0 A
+request 0 A     // 不会重复分配
+request 1 B
+request 1 A     // 等待阻塞
+activate 1      // 只有就绪态的进程能够被调度
+list_p
+list_r
+request 0 B     // 形成死锁
+list_p
+clear_cmd
+
+release 0 B     // 未在使用的资源
+release 0 G     // 未申请的资源
+release 0 N     // 不存在的资源
+release 0 A     // 死锁解除与释放后的调度
+list_p
+list_r
+request 0 A     // 只有运行态的进程能够请求资源
+timeout 0       // 只有运行态的进程能够进行计时器中断
+timeout 1
+list_p
+list_r
+clear_cmd
+
+create p3 1
+activate 2
+request 2 B     // 高优先级抢占
+list_p
+list_r
+request_io 2
+request_io 0    // 只有运行态的进程能够请求I/O操作
+list_p
+list_r
+clear_cmd
+
+create p4 0
+activate 3
+request_io 3    // I/O等待阻塞（不会抢占）
+list_p
+list_r
+clear_cmd
+
+io_completion 0 // 只有正在进行I/O操作的进程能完成I/O
+io_completion 2 // I/O操作完成及I/O资源释放后的调度
+list_p
+list_r
+io_completion 3
+list_r
+clear_cmd
+
+destroy 1
+destroy 0       // 只有就绪态的进程能够被结束
+destroy 2
+list_p
+timeout 2
+timeout 3
+list_p
+list_r
+timeout 0
+destroy 2
+destroy 3
+destroy 0
+exit_shell
