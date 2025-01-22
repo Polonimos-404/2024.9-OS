@@ -62,7 +62,7 @@ $ gcc -g '4-sem.c' -o prd_csm.exe
 
 #### 样例
 
-[example_1.txt](./Exp3-banker-algorithm/example_1.txt)、[example_2.txt](./Exp3-banker-algorithm/example_2.txt)是用于检测功能的进程分配状态样例，文件格式如下：
+[example_1.txt](./Exp3_banker-algorithm/example_1.txt)、[example_2.txt](./Exp3_banker-algorithm/example_2.txt)是用于检测功能的进程分配状态样例，文件格式如下：
 
 - 第一、第二行：每行一个整数，分别对应进程数$$n$$和资源种类数$$m$$
 - 第三行：$$m$$个整数，$$Available$$数组
