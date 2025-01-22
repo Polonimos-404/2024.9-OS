@@ -3,7 +3,6 @@
 #include <stdlib.h>
 #include <semaphore.h>
 
-#pragma warning( disable : E0028 )
 
 const char* IN_FILE_NAME = "in.txt", * OUT_FILE_NAME = "out.txt";   // 输入和输出文件名
 int buf_size;   // 缓存区大小
